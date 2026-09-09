@@ -1,0 +1,560 @@
+[
+  {
+    "key": "34c51fbeb58cea6f",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:13:32+00:00",
+    "change_type": "chow",
+    "title": "CHOW Bellhaven of Marietta -> new account under Bellhaven",
+    "rationale": "Acquired facility under Cedar Trail Communities with lifetime_revenue=$51250 AND outstanding_ar=$3800. Billing SOP: do NOT re-parent; create new account under Bellhaven and set chow_current_account on the old one. Old account left otherwise untouched.",
+    "ops": [
+      {
+        "op": "create",
+        "fields": {
+          "name": "Bellhaven of Marietta",
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "billing_street": "805 Colegate Dr",
+          "billing_city": "Marietta",
+          "billing_state": "OH",
+          "billing_zip": "45750",
+          "care_type": "Skilled Nursing",
+          "phone": "(614) 337-1967",
+          "status": "Active",
+          "note": "Created by pipeline 2026-09-09 for CHOW: facility acquired by Bellhaven but old account 001A34WFSUYHCRBLFT has revenue history ($51250) and outstanding AR ($3800), so it must be preserved per billing SOP."
+        }
+      },
+      {
+        "op": "patch",
+        "account_id": "001A34WFSUYHCRBLFT",
+        "fields": {
+          "chow_current_account": "{new_account_id}"
+        }
+      }
+    ]
+  },
+  {
+    "key": "e290cb678005f47d",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:13:32+00:00",
+    "change_type": "chow",
+    "title": "CHOW Bellhaven of Tiffin -> new account under Bellhaven",
+    "rationale": "Acquired facility under Cedar Trail Communities with lifetime_revenue=$84000 AND outstanding_ar=$12400. Billing SOP: do NOT re-parent; create new account under Bellhaven and set chow_current_account on the old one. Old account left otherwise untouched.",
+    "ops": [
+      {
+        "op": "create",
+        "fields": {
+          "name": "Bellhaven of Tiffin",
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "billing_street": "45 St Lawrence Dr",
+          "billing_city": "Tiffin",
+          "billing_state": "OH",
+          "billing_zip": "44883",
+          "care_type": "Skilled Nursing",
+          "phone": "(260) 589-2589",
+          "status": "Active",
+          "note": "Created by pipeline 2026-09-09 for CHOW: facility acquired by Bellhaven but old account 001U6RW32TY0WSXZZB has revenue history ($84000) and outstanding AR ($12400), so it must be preserved per billing SOP."
+        }
+      },
+      {
+        "op": "patch",
+        "account_id": "001U6RW32TY0WSXZZB",
+        "fields": {
+          "chow_current_account": "{new_account_id}"
+        }
+      }
+    ]
+  },
+  {
+    "key": "63b92ebadf5e4ae1",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:13:33+00:00",
+    "change_type": "create",
+    "title": "CREATE Amberly Manor (Hudson, OH)",
+    "rationale": "Website community with no CRM account at this address/city.",
+    "ops": [
+      {
+        "op": "create",
+        "fields": {
+          "name": "Amberly Manor",
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "billing_street": "4390 Darrow Rd",
+          "billing_city": "Hudson",
+          "billing_state": "OH",
+          "billing_zip": "44236",
+          "care_type": "Assisted Living",
+          "phone": "(330) 228-4392",
+          "status": "Active",
+          "note": "Created by pipeline 2026-09-09: listed on Bellhaven website, no matching CRM account."
+        }
+      }
+    ]
+  },
+  {
+    "key": "5df3a285d228ba7c",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:13:33+00:00",
+    "change_type": "create",
+    "title": "CREATE Bellhaven at Union Square (New Albany, OH)",
+    "rationale": "Website community with no CRM account at this address/city.",
+    "ops": [
+      {
+        "op": "create",
+        "fields": {
+          "name": "Bellhaven at Union Square",
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "billing_street": "118 Union Square Dr",
+          "billing_city": "New Albany",
+          "billing_state": "OH",
+          "billing_zip": "43054",
+          "care_type": "Assisted Living",
+          "phone": "(330) 519-9639",
+          "status": "Active",
+          "note": "Created by pipeline 2026-09-09: listed on Bellhaven website, no matching CRM account."
+        }
+      }
+    ]
+  },
+  {
+    "key": "902cc0c0b7b85e5f",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:13:33+00:00",
+    "change_type": "create",
+    "title": "CREATE Bellhaven of Batavia (Batavia, OH)",
+    "rationale": "Website community with no CRM account at this address/city.",
+    "ops": [
+      {
+        "op": "create",
+        "fields": {
+          "name": "Bellhaven of Batavia",
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "billing_street": "2000 Hospital Dr",
+          "billing_city": "Batavia",
+          "billing_state": "OH",
+          "billing_zip": "45103",
+          "care_type": "Skilled Nursing",
+          "phone": "(231) 698-3092",
+          "status": "Active",
+          "note": "Created by pipeline 2026-09-09: listed on Bellhaven website, no matching CRM account."
+        }
+      }
+    ]
+  },
+  {
+    "key": "e5bcabdf316171be",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:13:33+00:00",
+    "change_type": "create",
+    "title": "CREATE Bellhaven of Carlisle (Carlisle, PA)",
+    "rationale": "Website community with no CRM account at this address/city.",
+    "ops": [
+      {
+        "op": "create",
+        "fields": {
+          "name": "Bellhaven of Carlisle",
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "billing_street": "640 Walnut Bottom Rd",
+          "billing_city": "Carlisle",
+          "billing_state": "PA",
+          "billing_zip": "17015",
+          "care_type": "Skilled Nursing",
+          "phone": "(260) 386-7765",
+          "status": "Active",
+          "note": "Created by pipeline 2026-09-09: listed on Bellhaven website, no matching CRM account."
+        }
+      }
+    ]
+  },
+  {
+    "key": "0df33b5aaefdba69",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:16+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Bellhaven of Owosso -> Bellhaven of Owosso",
+    "rationale": "Same address as Bellhaven of Owosso (001EGU7BMJ942ZTRE6), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001QU150PM4Z15UA71",
+        "fields": {
+          "duplicate_of_account": "001EGU7BMJ942ZTRE6",
+          "status": "Inactive",
+          "note": "Duplicate of 001EGU7BMJ942ZTRE6 (Bellhaven of Owosso): same address, legacy record from Bellhaven Senior Living (Parent Account). Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "dc39d1535a7f40de",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:16+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Cedar Trail of Monroe -> Bellhaven Gardens of Monroe",
+    "rationale": "Same address as Bellhaven Gardens of Monroe (001U1750VLVJAGG1S5), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "0011AB44D05WLA9HTX",
+        "fields": {
+          "duplicate_of_account": "001U1750VLVJAGG1S5",
+          "status": "Inactive",
+          "note": "Duplicate of 001U1750VLVJAGG1S5 (Bellhaven Gardens of Monroe): same address, legacy record from Cedar Trail Communities (Parent Account). Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "c9778a7c8587dc89",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:16+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Harborview Nursing & Rehab of Port Clinton -> Bellhaven of Port Clinton",
+    "rationale": "Same address as Bellhaven of Port Clinton (001UELXDAKFRKB8932), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001JD2MWRA74LTSN24",
+        "fields": {
+          "duplicate_of_account": "001UELXDAKFRKB8932",
+          "status": "Inactive",
+          "note": "Duplicate of 001UELXDAKFRKB8932 (Bellhaven of Port Clinton): same address, legacy record from Harborview Care Group (Parent Account). Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "d044287a0475a0eb",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:16+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Harborview Shores of Erie -> Bellhaven Shores of Erie",
+    "rationale": "Same address as Bellhaven Shores of Erie (001CVBBCSDM7YHN220), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001BLYF02K97SZLZHH",
+        "fields": {
+          "duplicate_of_account": "001CVBBCSDM7YHN220",
+          "status": "Inactive",
+          "note": "Duplicate of 001CVBBCSDM7YHN220 (Bellhaven Shores of Erie): same address, legacy record from Harborview Care Group (Parent Account). Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "8d8bec052334cc8b",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:17+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Kettering Nursing & Rehabilitation -> Kettering Care Centre",
+    "rationale": "Same address as Kettering Care Centre (001WR41PYNWXCAE2X4), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "0016KTS1UAWBRXS09J",
+        "fields": {
+          "duplicate_of_account": "001WR41PYNWXCAE2X4",
+          "status": "Inactive",
+          "note": "Duplicate of 001WR41PYNWXCAE2X4 (Kettering Care Centre): same address, legacy record from no parent. Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "9a56b32e86114a7e",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:17+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Kettering Senior Campus -> Kettering Care Centre",
+    "rationale": "Same address as Kettering Care Centre (001WR41PYNWXCAE2X4), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001B7XZAA3AFALS9GP",
+        "fields": {
+          "duplicate_of_account": "001WR41PYNWXCAE2X4",
+          "status": "Inactive",
+          "note": "Duplicate of 001WR41PYNWXCAE2X4 (Kettering Care Centre): same address, legacy record from Cedar Trail Communities (Parent Account). Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "f53a163e0267972f",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:17+00:00",
+    "change_type": "duplicate",
+    "title": "DUPLICATE Monroe Gardens Care Center -> Bellhaven Gardens of Monroe",
+    "rationale": "Same address as Bellhaven Gardens of Monroe (001U1750VLVJAGG1S5), which is the website-confirmed record. Loser has rev=$0, ar=$0 (nothing billing-critical). Marking it the duplicate and Inactive per CRM conventions (no merge/delete in this API).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "00159PL81N38KM4FHM",
+        "fields": {
+          "duplicate_of_account": "001U1750VLVJAGG1S5",
+          "status": "Inactive",
+          "note": "Duplicate of 001U1750VLVJAGG1S5 (Bellhaven Gardens of Monroe): same address, legacy record from Harborview Care Group (Parent Account). Set by pipeline 2026-09-09."
+        }
+      }
+    ]
+  },
+  {
+    "key": "88887668fd61634e",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:17+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Arbors at Bellhaven Dayton (Dayton)",
+    "rationale": "Name drift: CRM 'Arbors at Bellhaven Dayton' -> website 'The Arbors at Bellhaven - Dayton'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "0010KJFP601YNTZVDA",
+        "fields": {
+          "name": "The Arbors at Bellhaven - Dayton"
+        }
+      }
+    ]
+  },
+  {
+    "key": "14ec4b6bfc91f76e",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:18+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Bellhaven Health Care Center of Ashland (Ashland)",
+    "rationale": "Name drift: CRM 'Bellhaven Health Care Center of Ashland' -> website 'Bellhaven Healthcare Centre of Ashland'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001RJ0D7Z5MAZN5HX5",
+        "fields": {
+          "name": "Bellhaven Healthcare Centre of Ashland"
+        }
+      }
+    ]
+  },
+  {
+    "key": "bc1438153af45e03",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:18+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Bellhaven Rehab and Nursing of Grove City (Grove City)",
+    "rationale": "Name drift: CRM 'Bellhaven Rehab and Nursing of Grove City' -> website 'Bellhaven Rehabilitation & Nursing of Grove City'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001TZCSTBZFM6K5BGN",
+        "fields": {
+          "name": "Bellhaven Rehabilitation & Nursing of Grove City"
+        }
+      }
+    ]
+  },
+  {
+    "key": "a6a576163563f2bb",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:18+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Bellhaven of Ashtabula (Ashtabula)",
+    "rationale": "Billing street is 'PO Box 517', website lists physical '3156 W Prospect Rd'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001NXP9X46CWEPSLSV",
+        "fields": {
+          "billing_street": "3156 W Prospect Rd"
+        }
+      }
+    ]
+  },
+  {
+    "key": "41c379a027c6e677",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:19+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Bellhaven of Sycamore Ridge (Miamisburg)",
+    "rationale": "Name drift: CRM 'Bellhaven of Sycamore Ridge' -> website 'Bellhaven at Sycamore Ridge'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "00191H7JR16471SZ34",
+        "fields": {
+          "name": "Bellhaven at Sycamore Ridge"
+        }
+      }
+    ]
+  },
+  {
+    "key": "03e0a53d8605153e",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:19+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Chesterton Senior Commons (Chesterton)",
+    "rationale": "Name drift: CRM 'Chesterton Senior Commons' -> website 'Bellhaven of Chesterton'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "0013NUZQHQUEZ8DXEG",
+        "fields": {
+          "name": "Bellhaven of Chesterton"
+        }
+      }
+    ]
+  },
+  {
+    "key": "1f479537b34bbfe9",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:19+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Riverbend Manor Care Center (Chagrin Falls)",
+    "rationale": "Name drift: CRM 'Riverbend Manor Care Center' -> website 'Bellhaven of Chagrin Falls'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001RJU1X4NBWC1Q0G7",
+        "fields": {
+          "name": "Bellhaven of Chagrin Falls"
+        }
+      }
+    ]
+  },
+  {
+    "key": "ff83c59609288018",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:20+00:00",
+    "change_type": "field_fix",
+    "title": "FIX Sunny Acres Retirement Home (Portage)",
+    "rationale": "Name drift: CRM 'Sunny Acres Retirement Home' -> website 'Bellhaven Willow Creek'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "0017MN2JYAJBDS8WQZ",
+        "fields": {
+          "name": "Bellhaven Willow Creek"
+        }
+      }
+    ]
+  },
+  {
+    "key": "d1ff242489b9e59c",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:20+00:00",
+    "change_type": "gone_chow",
+    "title": "CHOW (sold) Bellhaven of Sandusky -> Millstone Care of Sandusky",
+    "rationale": "Not on the Bellhaven website, and Millstone Care of Sandusky (0017JP8Z1UQ763BVK3) under Millstone Health Partners sits at the same address \u2014 the facility was evidently sold/divested. Account has revenue ($130000) and AR ($5200), so per the CHOW SOP spirit we preserve it, point chow_current_account at the current owner's account, and set Needs Review rather than leave a stale Active record.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001SXSF4ELF0Z2LGDM",
+        "fields": {
+          "chow_current_account": "0017JP8Z1UQ763BVK3",
+          "status": "Needs Review",
+          "note": "Divested: not on Bellhaven website as of 2026-09-09; Millstone Care of Sandusky under Millstone Health Partners (Parent Account) now at this address. chow_current_account points to the current owner's account. Revenue/AR preserved per billing SOP. Set by pipeline."
+        }
+      }
+    ]
+  },
+  {
+    "key": "f06a4088355927ec",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:20+00:00",
+    "change_type": "gone_inactive",
+    "title": "INACTIVE Bellhaven Care Center of Alliance (Alliance)",
+    "rationale": "Under the Bellhaven parent but not listed on the website. No revenue history and no AR, so nothing to preserve: marking Inactive.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "00116ETS45BL7DTQP7",
+        "fields": {
+          "status": "Inactive",
+          "note": "No longer on Bellhaven website as of 2026-09-09. No revenue/AR. Set by pipeline."
+        }
+      }
+    ]
+  },
+  {
+    "key": "6767929f97484a51",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:21+00:00",
+    "change_type": "gone_inactive",
+    "title": "INACTIVE Bellhaven of Coldwater (Coldwater)",
+    "rationale": "Under the Bellhaven parent but not listed on the website. No revenue history and no AR, so nothing to preserve: marking Inactive.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "0016PVXH4B25HWR7QE",
+        "fields": {
+          "status": "Inactive",
+          "note": "No longer on Bellhaven website as of 2026-09-09. No revenue/AR. Set by pipeline."
+        }
+      }
+    ]
+  },
+  {
+    "key": "fa19fbb5054c8cfc",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:21+00:00",
+    "change_type": "reparent",
+    "title": "FIX Bellhaven Crossings of Lima (Lima)",
+    "rationale": "Acquired from Harborview Care Group (rev=47000, ar=0 -> direct re-parent).",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001LGFPBJY4N9MB6KL",
+        "fields": {
+          "parent_id": "0015QAPLGS3FVYEEEM"
+        }
+      }
+    ]
+  },
+  {
+    "key": "93b6813e63954ad6",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:21+00:00",
+    "change_type": "reparent",
+    "title": "FIX Bellhaven Meadows of Findlay (Findlay)",
+    "rationale": "Parentless -> link to Bellhaven parent.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001UKEFGADQ8YCZ4YM",
+        "fields": {
+          "parent_id": "0015QAPLGS3FVYEEEM"
+        }
+      }
+    ]
+  },
+  {
+    "key": "c0a98dad96ae72dd",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:21+00:00",
+    "change_type": "reparent",
+    "title": "FIX Cedar Trail of Zanesville (Zanesville)",
+    "rationale": "Acquired from Cedar Trail Communities (rev=0, ar=0 -> direct re-parent); Name drift: CRM 'Cedar Trail of Zanesville' -> website 'Bellhaven of Zanesville'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001H1JMVZWP46D5VUF",
+        "fields": {
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "name": "Bellhaven of Zanesville"
+        }
+      }
+    ]
+  },
+  {
+    "key": "de492eb1a4889579",
+    "status": "approved",
+    "decided_at": "2026-09-09T20:14:22+00:00",
+    "change_type": "reparent",
+    "title": "FIX Kettering Care Centre (Kettering)",
+    "rationale": "Acquired from Harborview Care Group (rev=0, ar=0 -> direct re-parent); Name drift: CRM 'Kettering Care Centre' -> website 'Bellhaven of Kettering'.",
+    "ops": [
+      {
+        "op": "patch",
+        "account_id": "001WR41PYNWXCAE2X4",
+        "fields": {
+          "parent_id": "0015QAPLGS3FVYEEEM",
+          "name": "Bellhaven of Kettering"
+        }
+      }
+    ]
+  }
+]

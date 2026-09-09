@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<p><a href="/">&larr; back to queue</a></p>
+<h1>{{ p.title }}</h1>
+<p><span class="pill {{ p.status }}">{{ p.status }}</span>
+   <span style="color:var(--muted);font-size:13px">key {{ p.key }} &middot; type {{ p.change_type }} &middot; decided {{ p.decided_at or '—' }}</span></p>
+
+<div class="rationale"><b>Why:</b> {{ p.rationale }}</div>
+
+{% if p.evidence.website or p.evidence.crm %}
+<div class="ev">
+  {% if p.evidence.website %}
+  <div class="box">
+    <h3>Website (source of truth)</h3>
+    <div class="kv">
+      <span class="k">name</span><span>{{ p.evidence.website.name }}</span>
+      <span class="k">address</span><span>{{ p.evidence.website.street }}<br>{{ p.evidence.website.city }}, {{ p.evidence.website.state }} {{ p.evidence.website.zip }}</span>
+      <span class="k">care</span><span>{{ p.evidence.website.care | join(', ') }}</span>
+      <span class="k">phone</span><span>{{ p.evidence.website.phone }}</span>
+      <span class="k">slug</span><span>{{ p.slug }}</span>
+    </div>
+  </div>
+  {% endif %}
+  {% if p.evidence.crm %}
+  <div class="box">
+    <h3>CRM today</h3>
+    <div class="kv">
+      <span class="k">account</span><span>{{ p.evidence.crm.account_id }}</span>
+      <span class="k">name</span><span>{{ p.evidence.crm.name }}</span>
+      <span class="k">parent</span><span>{{ p.evidence.crm.parent_name or '(none)' }}</span>
+      <span class="k">address</span><span>{{ p.evidence.crm.billing_street }}, {{ p.evidence.crm.billing_city }}</span>
+      <span class="k">care</span><span>{{ p.evidence.crm.care_type }}</span>
+      <span class="k">status</span><span>{{ p.evidence.crm.status }}</span>
+      <span class="k">revenue / AR</span><span>${{ p.evidence.crm.lifetime_revenue }} / ${{ p.evidence.crm.outstanding_ar }}</span>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if p.evidence.survivor %}
+<div class="ev"><div class="box" style="grid-column:1/-1">
+  <h3>Survivor (duplicate target)</h3>
+  <div class="kv">
+    <span class="k">account</span><span>{{ p.evidence.survivor.account_id }}</span>
+    <span class="k">name</span><span>{{ p.evidence.survivor.name }}</span>
+    <span class="k">parent</span><span>{{ p.evidence.survivor.parent_name or '(none)' }}</span>
+  </div>
+</div></div>
+{% endif %}
+{% if p.evidence.twin %}
+<div class="ev"><div class="box" style="grid-column:1/-1">
+  <h3>Same-address account under another parent (CHOW target)</h3>
+  <div class="kv">
+    <span class="k">account</span><span>{{ p.evidence.twin.account_id }}</span>
+    <span class="k">name</span><span>{{ p.evidence.twin.name }}</span>
+    <span class="k">parent</span><span>{{ p.evidence.twin.parent_name }}</span>
+  </div>
+</div></div>
+{% endif %}
+
+<h2>Operations this approval will perform</h2>
+<pre>{% for op in p.ops %}{{ op.op | upper }}{% if op.account_id %} /accounts/{{ op.account_id }}{% endif %}
+{{ op.fields | tojson(indent=2) if op.fields else '' }}
+{% endfor %}</pre>
+
+{% if p.apply_log %}
+<h2>Apply log</h2>
+<pre>{{ p.apply_log | tojson(indent=2) }}</pre>
+{% endif %}
+
+{% if p.status == 'pending' %}
+<div class="actions">
+  <form method="post" action="/proposal/{{ p.key }}/decision">
+    <input type="hidden" name="decision" value="approved">
+    <button class="btn ok" type="submit">Approve &amp; write to CRM</button>
+  </form>
+  <form method="post" action="/proposal/{{ p.key }}/decision">
+    <input type="hidden" name="decision" value="rejected">
+    <button class="btn bad" type="submit">Reject</button>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Review queue</h1>
+<div class="cards">
+  {% for label, n in [('Pending', counts.get('pending',0)), ('Approved', counts.get('approved',0)), ('Rejected', counts.get('rejected',0))] %}
+  <div class="card"><div class="n">{{ n }}</div><div class="l">{{ label }}</div></div>
+  {% endfor %}
+</div>
+<form method="post" action="/run" style="margin:14px 0; display:flex; gap:10px">
+  <button class="btn ghost" type="submit">Re-run pipeline (scrape + match)</button>
+</form>
+{% if pending %}
+<form method="post" action="/approve-all" style="margin:0 0 8px"
+      onsubmit="return confirm('Approve all {{ pending|length }} pending proposals and write them to the CRM?')">
+  <button class="btn ok" type="submit">Approve all pending ({{ pending|length }})</button>
+</form>
+{% endif %}
+
+<h2>Pending ({{ pending|length }})</h2>
+{% if not pending %}<p style="color:var(--muted)">Queue is empty.</p>{% endif %}
+<table>
+  <tr><th>Type</th><th>Proposal</th><th>Rationale</th><th></th></tr>
+  {% for p in pending %}
+  <tr>
+    <td><span class="pill pending">{{ p.change_type }}</span></td>
+    <td><a href="/proposal/{{ p.key }}"><b>{{ p.title }}</b></a></td>
+    <td>{{ p.rationale[:140] }}{% if p.rationale|length > 140 %}&hellip;{% endif %}</td>
+    <td><a class="btn ghost" href="/proposal/{{ p.key }}">review &rarr;</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>Decided ({{ decided|length }})</h2>
+<table>
+  <tr><th>Type</th><th>Proposal</th><th>Status</th><th>Decided</th></tr>
+  {% for p in decided %}
+  <tr>
+    <td>{{ p.change_type }}</td>
+    <td><a href="/proposal/{{ p.key }}">{{ p.title }}</a></td>
+    <td><span class="pill {{ p.status }}">{{ p.status }}</span></td>
+    <td style="color:var(--muted)">{{ p.decided_at or '' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

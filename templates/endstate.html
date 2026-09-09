@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>End-state report</h1>
+<p style="color:var(--muted)">Live re-run of the matcher against the current CRM.
+After a full approve cycle, "never-before-seen" should be ~0 and every Active
+Bellhaven-parented account should match a website location.</p>
+<form method="post" action="/run"><button class="btn ghost" type="submit" formaction="/run">Re-run matcher</button></form>
+<pre>{{ report }}</pre>
+{% endblock %}

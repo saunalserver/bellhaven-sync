@@ -1,0 +1,10 @@
+data/
+*.db
+*.db-journal
+__pycache__/
+*.pyc
+.venv/
+.env
+logs/
+
+logs_app.log
