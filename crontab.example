@@ -1,3 +1,3 @@
 # Daily 06:00 — scrape website, pull CRM, queue proposals for review.
 # Never writes to the CRM; approvals only happen in the review app.
-0 6 * * * cd /home/saunaldesktop/projects/bellhaven-sync && .venv/bin/python -m bellhaven.pipeline >> logs/pipeline.log 2>&1
+0 6 * * * cd $HOME/projects/bellhaven-sync && mkdir -p logs && .venv/bin/python -m bellhaven.pipeline >> logs/pipeline.log 2>&1
