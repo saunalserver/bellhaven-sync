@@ -56,6 +56,9 @@ def decide(key: str, decision: str = Form(...)):
     p = store.get(key)
     if not p or decision not in ("approved", "rejected"):
         return HTMLResponse("bad request", status_code=400)
+    if p["status"] != "pending":
+        # Already decided: never re-apply ops (double-click, back-button resubmit).
+        return HTMLResponse(f"already {p['status']}", status_code=400)
     log = None
     if decision == "approved":
         log = apply_mod.apply(json.loads(p["proposal"]))
