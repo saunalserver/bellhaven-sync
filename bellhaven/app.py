@@ -2,6 +2,8 @@
 rejects it. Approvals write to the CRM through the API. Nothing writes without
 approval. Run: uvicorn bellhaven.app:app --reload --port 8741"""
 import json
+import os
+from datetime import datetime
 
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -15,13 +17,22 @@ templates = Jinja2Templates(directory=os.path.join(os.path.dirname(__file__), ".
 app = FastAPI(title="Bellhaven CRM Review")
 
 
+def _fmt_dt(iso: str | None) -> str:
+    if not iso:
+        return ""
+    try:
+        return datetime.fromisoformat(iso).strftime("%b %-d, %Y \u00b7 %H:%M UTC")
+    except ValueError:
+        return iso
+
+
 def _proposal_dicts(status: str | None = None) -> list[dict]:
     rows = store.list_decisions(status)
     out = []
     for r in rows:
         p = json.loads(r["proposal"])
         p["status"] = r["status"]
-        p["decided_at"] = r["decided_at"]
+        p["decided_at"] = _fmt_dt(r["decided_at"])
         p["apply_log"] = json.loads(r["apply_log"]) if r["apply_log"] else None
         out.append(p)
     return out
