@@ -1,8 +1,8 @@
 """Match website locations to CRM accounts and classify every discrepancy.
 
-Design: match on *address + city* first (normalized), name second. High name
-similarity alone (the Amberly / Bristol / Willowbrook decoy families) never
-pulls an account in. Only accounts under the Bellhaven/Harborview/Cedar Trail
+Match on address + city first (normalized), name second. High name similarity
+alone (the Amberly / Bristol / Willowbrook decoy families) never pulls an
+account in. Only accounts under the Bellhaven/Harborview/Cedar Trail
 parents (or parentless Bellhaven-named accounts) are ever proposed against;
 Stonebridge, Juniper Point and Millstone accounts are never touched, except
 reading Millstone's Sandusky account as the CHOW target it is.

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .pill.clean { background:#e7efe9; color:var(--ok); }
+  .pill.create { background:#e3edf7; color:#1d4f7c; }
+  .pill.field_fix, .pill.reparent { background:#fdf6d8; color:#7a5d00; }
+  .pill.chow { background:#efe7f6; color:#5d3a86; }
+  .pill.out_of_scope { background:#f0f0f0; color:var(--muted); }
+  .pill.duplicate, .pill.gone_inactive, .pill.gone_chow, .pill.gone_review { background:#f9e5ea; color:var(--bad); }
+</style>
+<h1>Results</h1>
+<p style="color:var(--muted)">Every website location and where it landed, plus the CRM accounts retired.
+Derived from the decision store — no API calls.</p>
+
+<div class="cards">
+  <div class="card"><div class="n">{{ rows|length }}</div><div class="l">website locations</div></div>
+  <div class="card"><div class="n">{{ outcomes.get('clean', 0) }}</div><div class="l">confident match, no action</div></div>
+  <div class="card"><div class="n">{{ approved }}</div><div class="l">proposals approved</div></div>
+  <div class="card"><div class="n">{{ pending }}</div><div class="l">pending</div></div>
+  <div class="card"><div class="n">{{ retired|length }}</div><div class="l">CRM accounts retired</div></div>
+</div>
+
+<h2>Website &rarr; CRM ({{ rows|length }} locations)</h2>
+<table>
+  <tr><th>Community</th><th>City, state</th><th>Care offerings</th><th>Outcome</th><th>Decision</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td><b>{{ r.loc.name }}</b></td>
+    <td>{{ r.loc.city }}, {{ r.loc.state }}</td>
+    <td style="color:var(--muted)">{{ r.loc.care | join(', ') }}</td>
+    <td><span class="pill {{ r.outcome }}">{{ {'clean':'clean match','create':'created','chow':'CHOW new account','reparent':'re-parented','field_fix':'field fix','out_of_scope':'review only'}[r.outcome] }}</span></td>
+    <td>{% if r.d %}<a href="/proposal/{{ r.d.key }}">{{ r.d.title }}</a>{% else %}<span style="color:var(--muted)">—</span>{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>CRM accounts retired from the active set ({{ retired|length }})</h2>
+<p style="color:var(--muted)">Duplicates and communities no longer on the website. No merge/delete in this API, so losers are marked <tt>duplicate_of_account</tt> + Inactive, and sold/divested facilities keep their billing history behind a CHOW link.</p>
+<table>
+  <tr><th>Type</th><th>Account</th><th>What happened</th><th>Decision</th></tr>
+  {% for d in retired %}
+  <tr>
+    <td><span class="pill {{ d.change_type }}">{{ {'duplicate':'duplicate','gone_inactive':'gone from website','gone_chow':'sold (CHOW)','gone_review':'needs review'}[d.change_type] }}</span></td>
+    <td><b>{{ d.evidence.crm.name }}</b> <span style="color:var(--muted)">{{ d.evidence.crm.billing_city }}</span></td>
+    <td>{{ d.rationale[:160] }}{% if d.rationale|length > 160 %}&hellip;{% endif %}</td>
+    <td><a href="/proposal/{{ d.key }}">detail &rarr;</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

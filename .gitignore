@@ -6,5 +6,3 @@ __pycache__/
 .venv/
 .env
 logs/
-
-logs_app.log

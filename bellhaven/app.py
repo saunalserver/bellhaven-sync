@@ -75,6 +75,36 @@ def approve_all():
     return RedirectResponse("/", status_code=303)
 
 
+@app.get("/results", response_class=HTMLResponse)
+def results(request: Request):
+    """One-page picture of the reconciliation: every website location with its
+    outcome, plus the CRM-side retirements. Reads the decision store and the
+    last scrape; hits no API."""
+    loc_path = os.path.join(os.path.dirname(__file__), "..", "data", "website_locations.json")
+    locations = json.load(open(loc_path)) if os.path.exists(loc_path) else []
+    decided = _proposal_dicts()
+    by_slug = {d["slug"]: d for d in decided if d.get("slug")}
+    rows = []
+    for loc in locations:
+        d = by_slug.get(loc["slug"])
+        rows.append({
+            "loc": loc,
+            "outcome": (d["change_type"] if d else "clean"),
+            "d": d,
+        })
+    retired = [d for d in decided if not d.get("slug")]
+    outcomes = {}
+    for r in rows:
+        outcomes[r["outcome"]] = outcomes.get(r["outcome"], 0) + 1
+    return templates.TemplateResponse(request, "results.html", {
+        "rows": rows,
+        "retired": retired,
+        "outcomes": outcomes,
+        "approved": sum(1 for d in decided if d["status"] == "approved"),
+        "pending": sum(1 for d in decided if d["status"] == "pending"),
+    })
+
+
 @app.get("/endstate", response_class=HTMLResponse)
 def endstate(request: Request):
     import io, contextlib

@@ -24,7 +24,7 @@ uv venv .venv && uv pip install --python .venv -r requirements.txt  # or: python
 cp .env.example .env          # put your token in
 .venv/bin/python -m bellhaven.pipeline       # scrape + match + queue proposals
 .venv/bin/uvicorn bellhaven.app:app --port 8741
-# open http://localhost:8741 — review, approve, done
+# open http://localhost:8741 — review, approve; /results and /endstate summarize
 .venv/bin/python -m bellhaven.pipeline --verify   # end-state report
 ```
 
