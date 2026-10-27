@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Demo: one live CRM write on an out-of-scope decoy account, then revert.
+# Same patch_account path apply.py uses on approval — end state stays untouched.
+cd "$(dirname "$0")"
+source .env
+API="$BELHAVEN_API_BASE/api/v1"
+ID=001BR49KRHQDR5HCVS   # Aspen Court Nursing & Rehabilitation (decoy)
+AUTH="Authorization: Bearer $BELHAVEN_TOKEN"
+
+echo "── LIVE WRITE DEMO ───────────────────────────────────────────────"
+echo "   target : Aspen Court Nursing & Rehabilitation ($ID)"
+echo "            out-of-scope decoy — the pipeline would never touch it,"
+echo "            so the audited end state cannot be corrupted"
+echo "   field  : note (cosmetic metadata — not billing, parent, status)"
+echo "   call   : PATCH /api/v1/accounts/$ID"
+echo "            = the exact HTTP write apply.py fires on an approval"
+echo "──────────────────────────────────────────────────────────────────"
+echo
+echo "1) write the note:"
+curl -s -X PATCH "$API/accounts/$ID" -H "$AUTH" -H 'Content-Type: application/json' \
+  -d '{"note": "Live walkthrough demo — reverting now."}'; echo
+echo
+echo "2) read it back (GET the same account):"
+curl -s "$API/accounts/$ID" -H "$AUTH" | python3 -c 'import json,sys; print("   note =", json.load(sys.stdin)["note"])'
+echo
+echo "   -> nothing appears on the dashboard from this: it bypasses the"
+echo "      pipeline, so no proposal is queued. the dashboard only moves"
+echo "      when the matcher finds a discrepancy and asks a human."
+echo
+read -r -p "3) press Enter to revert... "
+echo "   reverted (note -> empty):"
+curl -s -X PATCH "$API/accounts/$ID" -H "$AUTH" -H 'Content-Type: application/json' \
+  -d '{"note": ""}'; echo
+echo
+echo "   state restored — same account, same field, end state intact."

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Demo: idempotency — re-run matching, expect zero new proposals.
+cd "$(dirname "$0")"
+cat <<'BANNER'
+
+── DAILY PIPELINE, RUN COLD, RIGHT NOW ────────────────────────────
+ stage 1  scrape  : pull the 35 communities off the live website
+ stage 2  fetch   : pull all 127 CRM accounts through the API
+ stage 3  match   : re-classify every location x account pair from
+                   scratch, and queue a proposal for every discrepancy
+ -------------------------------------------------------------------
+ what to watch for:
+   "matcher currently generates 0 proposals"  -> CRM and website agree
+   "never-before-seen: 0"                     -> idempotent: a re-run
+                                                 re-proposes nothing
+   "stale keys: 28"  -> my 28 approved fixes no longer even generate,
+                        because the discrepancies they fixed are gone
+ -------------------------------------------------------------------
+ writes to the CRM: NONE. this whole run is read-only (scrape + GET).
+BANNER
+exec python3 -m bellhaven.pipeline --verify
